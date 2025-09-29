@@ -11,12 +11,6 @@ RSpec.describe Hanami::Assets::Helpers do
         @hanami_assets = assets
       end
 
-      # Make html_safe work for testing
-      class String
-        def html_safe
-          self
-        end unless method_defined?(:html_safe)
-      end
 
       private
 
@@ -82,6 +76,7 @@ RSpec.describe Hanami::Assets::Helpers do
 
       expect(result.scan(/<link/).length).to eq(2)
     end
+
   end
 
   describe "#javascript_tag" do
@@ -118,6 +113,7 @@ RSpec.describe Hanami::Assets::Helpers do
       expect(result).to include('async')
       expect(result).to include('defer')
     end
+
   end
 
   describe "#image_tag" do
@@ -146,6 +142,7 @@ RSpec.describe Hanami::Assets::Helpers do
       expect(result).to include('alt="Company Logo"')
       expect(result).to include('class="header-logo"')
     end
+
   end
 
   describe "#asset_url" do
@@ -187,6 +184,7 @@ RSpec.describe Hanami::Assets::Helpers do
       expect(result).to eq("/assets/app-abc123.css")
     end
   end
+
 
   describe "subresource integrity" do
     let(:config) do

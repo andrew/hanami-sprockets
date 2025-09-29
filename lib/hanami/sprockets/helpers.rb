@@ -129,6 +129,7 @@ module Hanami
         end
       end
 
+
       private
 
       def hanami_assets
@@ -155,6 +156,7 @@ module Hanami
         "<img#{build_html_attributes(attrs)}>"
       end
 
+
       def build_stylesheet_attributes(asset, **options)
         attrs = options.dup
 
@@ -177,6 +179,7 @@ module Hanami
         attrs
       end
 
+
       def build_html_attributes(attrs)
         attrs.map do |key, value|
           if value == true
@@ -195,6 +198,7 @@ module Hanami
           '"' => "&quot;"
         })
       end
+
     end
   end
 end
