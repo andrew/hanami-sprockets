@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "sprockets", "~> 4.0"
   spec.add_dependency "zeitwerk", "~> 2.6"
   spec.add_dependency "base64", "~> 0.1"
+  spec.add_dependency "hanami-view", "~> 2.1"
 
   spec.add_development_dependency "bundler", ">= 1.6", "< 3"
   spec.add_development_dependency "rake", "~> 13"

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "hanami/view/html"
+
 module Hanami
   class Assets
     # Asset helpers for use in templates
@@ -29,7 +31,7 @@ module Hanami
               stylesheet_link_tag("#{hanami_assets.config.path_prefix}/#{source}.css", **options)
             end
           end
-        end.join("\n")
+        end.join("\n").html_safe
       end
 
       # Generate a javascript script tag
@@ -54,7 +56,7 @@ module Hanami
               javascript_include_tag("#{hanami_assets.config.path_prefix}/#{source}.js", **options)
             end
           end
-        end.join("\n")
+        end.join("\n").html_safe
       end
 
       # Generate an image tag
@@ -68,23 +70,23 @@ module Hanami
       # @since 0.1.0
       def image_tag(source, **options)
         if external_source?(source)
-          build_image_tag(source, **options)
+          build_image_tag(source, **options).html_safe
         else
           begin
             # Try common image extensions
             %w[.png .jpg .jpeg .gif .svg].each do |ext|
               begin
                 asset = hanami_assets[source + ext]
-                return build_image_tag(asset.url, **options)
+                return build_image_tag(asset.url, **options).html_safe
               rescue AssetMissingError
                 next
               end
             end
 
             # Fallback to direct path
-            build_image_tag("#{hanami_assets.config.path_prefix}/#{source}", **options)
+            build_image_tag("#{hanami_assets.config.path_prefix}/#{source}", **options).html_safe
           rescue AssetMissingError
-            build_image_tag("#{hanami_assets.config.path_prefix}/#{source}", **options)
+            build_image_tag("#{hanami_assets.config.path_prefix}/#{source}", **options).html_safe
           end
         end
       end
