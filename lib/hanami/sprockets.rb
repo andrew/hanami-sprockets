@@ -247,6 +247,9 @@ module Hanami
       # Add any additional paths from config
       config.asset_paths.each { |path| env.append_path(path) }
 
+      # Automatically discover and add gem asset paths
+      discover_gem_asset_paths.each { |path| env.append_path(path) }
+
       # Configure processors based on what gems are available
       configure_processors(env)
 
@@ -257,10 +260,11 @@ module Hanami
       # Sprockets will auto-detect most processors if the gems are available
       # But we can explicitly configure them here if needed
 
-      # SCSS/Sass support (if sass-rails or sassc-rails is available)
+      # SCSS/Sass support (if sassc is available)
       begin
         require 'sassc'
-        # Sprockets will automatically use SassC if available
+        # SassC will automatically be used for .scss and .sass files
+        # Sprockets will handle this automatically
       rescue LoadError
         # Sass not available, that's fine
       end
@@ -280,6 +284,35 @@ module Hanami
       rescue LoadError
         # Babel not available, that's fine
       end
+    end
+
+    def discover_gem_asset_paths
+      paths = []
+
+      # Common asset directory patterns that gems use
+      asset_patterns = [
+        'assets/stylesheets',
+        'assets/javascripts',
+        'assets/images',
+        'assets/fonts',
+        'app/assets/stylesheets',
+        'app/assets/javascripts',
+        'app/assets/images',
+        'vendor/assets/stylesheets',
+        'vendor/assets/javascripts'
+      ]
+
+      # Iterate through all loaded gems
+      Gem.loaded_specs.each do |name, spec|
+        asset_patterns.each do |pattern|
+          potential_path = File.join(spec.gem_dir, pattern)
+          if File.directory?(potential_path)
+            paths << potential_path
+          end
+        end
+      end
+
+      paths
     end
 
     def calculate_sri(sprockets_asset)
