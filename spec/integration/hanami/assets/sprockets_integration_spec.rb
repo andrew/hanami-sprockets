@@ -93,7 +93,7 @@ RSpec.describe "Sprockets integration" do
     let(:output_dir) { File.join(temp_dir, "public", "assets") }
 
     it "precompiles configured assets" do
-      manifest = assets.precompile(output_dir)
+      assets.precompile(output_dir)
 
       expect(File.exist?(output_dir)).to be true
 
