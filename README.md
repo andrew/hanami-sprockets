@@ -1,5 +1,7 @@
 # Hanami::Sprockets
 
+[![Gem Version](https://badge.fury.io/rb/hanami-sprockets.svg)](https://badge.fury.io/rb/hanami-sprockets)
+
 Drop-in replacement for hanami-assets that uses Sprockets (like Rails) instead of npm/Node.js.
 
 If you want the Rails asset pipeline in your Hanami app without dealing with npm, this is for you.
