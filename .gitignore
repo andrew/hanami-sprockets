@@ -1,0 +1,17 @@
+# Compiled assets
+/public/assets/
+manifest.json
+
+# Gem build artifacts
+*.gem
+pkg/
+
+# RSpec
+.rspec_status
+
+# Coverage
+coverage/
+
+# Temporary files
+tmp/
+.DS_Store
