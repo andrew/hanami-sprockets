@@ -33,4 +33,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rack-test", "~> 1.1"
   spec.add_development_dependency "dry-configurable", "~> 1.1"
   spec.add_development_dependency "dry-inflector", "~> 1.0"
+  spec.add_development_dependency "listen", "~> 3.8"
 end

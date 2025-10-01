@@ -26,7 +26,7 @@ gem 'hanami-sprockets'
 And then execute:
 
 ```bash
-$ bundle install
+bundle install
 ```
 
 ## Basic Usage
@@ -54,7 +54,7 @@ assets = Hanami::Assets.new(
 
 Follow Rails conventions:
 
-```
+```text
 app/
 ├── assets/
 │   ├── stylesheets/
@@ -155,6 +155,63 @@ manifest = assets.precompile("/path/to/public/assets")
 puts "Compiled assets:", manifest.assets.keys
 ```
 
+### Command Line Interface
+
+The gem includes CLI commands similar to Hanami's asset commands:
+
+#### Compile Assets
+
+Compile assets for production deployment:
+
+```bash
+bundle exec hanami-sprockets compile
+```
+
+With custom output directory:
+
+```bash
+bundle exec hanami-sprockets compile -o public/dist
+```
+
+#### Watch Assets
+
+Watch assets for changes during development:
+
+```bash
+bundle exec hanami-sprockets watch
+```
+
+The watch command monitors your asset directories for changes and automatically recompiles when files are modified. Requires the `listen` gem to be available.
+
+#### CLI Options
+
+```bash
+Usage: hanami-sprockets [COMMAND] [OPTIONS]
+
+Commands:
+  compile    Compile assets for production
+  watch      Watch assets for changes and recompile
+
+Options:
+  -r, --root ROOT      Application root directory
+  -o, --output OUTPUT  Output directory for compiled assets
+  -h, --help           Show help message
+```
+
+### Integration with Hanami CLI
+
+When used within a Hanami application, hanami-sprockets provides command classes that can be automatically discovered by Hanami's CLI system. This allows you to use:
+
+```bash
+# Instead of hanami-sprockets compile
+hanami assets compile
+
+# Instead of hanami-sprockets watch
+hanami assets watch
+```
+
+These commands integrate seamlessly with Hanami's application structure and automatically discover your app's configuration. The gem provides compatible command classes in the `Hanami::CLI::Commands::App::Assets` namespace that follow Hanami's CLI conventions.
+
 ## Advanced Configuration
 
 ```ruby
@@ -211,7 +268,7 @@ Main class for asset management.
 
 Represents a single asset.
 
-#### Methods
+#### Asset Methods
 
 - `#url` - Full URL to asset
 - `#path` - Path to asset (without base URL)
@@ -223,7 +280,7 @@ Represents a single asset.
 
 Template helpers for generating asset HTML tags.
 
-#### Methods
+#### Helper Methods
 
 - `stylesheet_tag(*sources, **options)` - Generate `<link>` tags
 - `javascript_tag(*sources, **options)` - Generate `<script>` tags

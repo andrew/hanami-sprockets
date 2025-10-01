@@ -22,7 +22,9 @@ module Hanami
         loader.ignore(
           "#{root}/hanami-sprockets.rb",
           "#{root}/hanami/sprockets/version.rb",
-          "#{root}/hanami/sprockets/errors.rb"
+          "#{root}/hanami/sprockets/errors.rb",
+          "#{root}/hanami/sprockets/cli.rb",
+          "#{root}/hanami/cli"
         )
         loader.enable_reloading if loader.respond_to?(:enable_reloading)
         loader.inflector = Zeitwerk::GemInflector.new("#{root}/hanami-sprockets.rb")
