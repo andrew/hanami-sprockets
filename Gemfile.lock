@@ -31,7 +31,7 @@ GEM
       temple (~> 0.10.0, >= 0.10.2)
       tilt (~> 2.3)
       zeitwerk (~> 2.6)
-    json (2.15.0)
+    json (2.15.2.1)
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
     listen (3.9.0)
@@ -120,7 +120,7 @@ CHECKSUMS
   ffi (1.17.2-arm64-darwin) sha256=54dd9789be1d30157782b8de42d8f887a3c3c345293b57ffb6b45b4d1165f813
   hanami-sprockets (0.2.0)
   hanami-view (2.2.1) sha256=09179b2ce6f30e1b9e939d85f44cf11ca4803bad7a91788376586b0e31bb2560
-  json (2.15.0) sha256=bc24d490a1d81bcbf6b45ee5c02695545d4ed37f679cee879b789a2bbb53ad5c
+  json (2.15.2.1) sha256=d1f8343355e5367692e3b5dc5270b07cf4657f3febbb4ebe8e98ad5c0f2ed116
   language_server-protocol (3.17.0.5) sha256=fd1e39a51a28bf3eec959379985a72e296e9f9acfce46f6a79d31ca8760803cc
   lint_roller (1.1.0) sha256=2c0c845b632a7d172cb849cc90c1bce937a28c5c8ccccb50dfd46a485003cc87
   listen (3.9.0) sha256=db9e4424e0e5834480385197c139cb6b0ae0ef28cc13310cfd1ca78377d59c67
